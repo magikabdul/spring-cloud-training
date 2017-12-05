@@ -57,10 +57,6 @@ public class UsersService implements UserDetailsService {
         return new ResultPage<>(usersPage.getContent(), usersPage.getNumber(), usersPage.getTotalPages());
     }
 
-    public void setDefaultDepartmentId(long defaultDepartmentId) {
-        this.defaultDepartmentId = defaultDepartmentId;
-    }
-
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
         return usersRepository.getByLogin(login)
