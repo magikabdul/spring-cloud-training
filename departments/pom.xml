@@ -20,6 +20,7 @@
         <modelmapper.verion>1.1.0</modelmapper.verion>
         <swagger.version>2.7.0</swagger.version>
         <spring-cloud.version>Edgware.RELEASE</spring-cloud.version>
+        <postgresql.version>42.1.4</postgresql.version>
     </properties>
 
     <parent>
@@ -41,6 +42,7 @@
     </dependencyManagement>
 
 	<build>
+        <finalName>departments</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -110,6 +112,11 @@
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
