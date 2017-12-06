@@ -1,6 +1,3 @@
 spring:
   application:
     name: discovery-server
-  cloud:
-    config:
-      label: 10-Docker

@@ -1,7 +1,3 @@
 spring:
   application:
     name: departments-microservice
-  cloud:
-    config:
-      #uri: http://localhost:8888
-      label: 10-Docker

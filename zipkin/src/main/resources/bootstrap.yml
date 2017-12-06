@@ -1,7 +1,4 @@
 spring:
   application:
     name: zipkin-server
-  cloud:
-    config:
-      label: 10-Docker
 
