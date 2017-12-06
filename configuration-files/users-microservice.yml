@@ -7,4 +7,4 @@ spring:
         output:
           destination: new-users
           content-type: application/json
-defaultDepartmentId: 1
+defaultDepartmentId: 2
