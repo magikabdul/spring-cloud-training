@@ -19,4 +19,7 @@ public class TestConfig {
         this.defaultDepartmentId = defaultDepartmentId;
     }
 
+    public Long getDefaultDepartmentId() {
+        return defaultDepartmentId;
+    }
 }
