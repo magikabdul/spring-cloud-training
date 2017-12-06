@@ -17,7 +17,7 @@ public class DepartmentsConfig {
 
     @Value("${defaultDepartmentId}")
     public void setDefaultDepartmentId(Long defaultDepartmentId) {
-        Logger.getLogger(getClass().getName()).log(Level.INFO, " ### Setting new default department id: " + defaultDepartmentId);
+        Logger.getLogger(getClass().getName()).log(Level.INFO, "### Setting new default department id: " + defaultDepartmentId);
         this.defaultDepartmentId = defaultDepartmentId;
     }
 
