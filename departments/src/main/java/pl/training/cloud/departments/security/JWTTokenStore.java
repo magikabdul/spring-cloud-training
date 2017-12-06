@@ -28,6 +28,11 @@ public class JWTTokenStore {
         return new JwtTokenStore(jwtAccessTokenConverter);
     }
 
+    @Bean
+    public TokenEnhancer jwtTokenEnhancer() {
+        return new JWTTokenEnhancer();
+    }
+
     @Primary
     @Bean
     public DefaultTokenServices tokenServices(TokenStore tokenStore) {
@@ -35,11 +40,6 @@ public class JWTTokenStore {
         defaultTokenServices.setTokenStore(tokenStore);
         defaultTokenServices.setSupportRefreshToken(false);
         return defaultTokenServices;
-    }
-
-    @Bean
-    public TokenEnhancer jwtTokenEnhancer() {
-        return new JWTTokenEnhancer();
     }
 
 }
