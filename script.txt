@@ -1,0 +1,12 @@
+npm install -g mvn
+npm install --global --production windows-build-tools
+cd client
+npm install
+npm install -g @angular/cli
+
+z katalogu projektu (terminal dockera)
+./rebuild.sh
+./docker-rebuild.sh
+
+Jeśli przy budowaniu wywala o braku node-sass
+npm install -g node-sass --no-bin-links
