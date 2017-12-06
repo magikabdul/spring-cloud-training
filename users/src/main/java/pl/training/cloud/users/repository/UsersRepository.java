@@ -13,9 +13,11 @@ public interface UsersRepository extends JpaRepository<User, Long> {
 
     Optional<User> getByLogin(String login);
 
+/*
     @Transactional
     @Modifying
     @Query("delete from User u where u.login = :login and id = ?#{ principal?.id }")
     void deleteByLogin(@Param("login") String login);
+*/
 
 }
