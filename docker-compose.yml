@@ -44,8 +44,8 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
       - PGDATA=/var/lib/postgresql/data/application
-    volumes:
-      - ./data/users:/var/lib/postgresql/data/application
+    #volumes:
+    #  - ./data/users:/var/lib/postgresql/data/application
     networks:
       cloud:
         ipv4_address: ${USERS_DATABASE_SERVER}
@@ -69,8 +69,8 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
       - PGDATA=/var/lib/postgresql/data/application
-    volumes:
-      - ./data/departments:/var/lib/postgresql/data/application
+    #volumes:
+    #  - ./data/departments:/var/lib/postgresql/data/application
     networks:
       cloud:
         ipv4_address: ${DEPARTMENTS_DATABASE_SERVER}
