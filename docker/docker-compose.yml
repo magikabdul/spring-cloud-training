@@ -9,6 +9,7 @@ services:
     environment:
       MESOS_ZK: zk://localhost:2181/mesos
       MESOS_HOSTNAME: localhost
+      SWARM_MESOS_USER: root
     depends_on:
       - zookeeper
   mesos_slave:
@@ -22,6 +23,7 @@ services:
       MESOS_WORK_DIR: /tmp
       MESOS_LAUNCHER: posix
       MESOS_SYSTEMD_ENABLE_SUPPORT: "false"
+      SWARM_MESOS_USER: root
     depends_on:
       - zookeeper
       - mesos_master
@@ -30,5 +32,6 @@ services:
     network_mode: host
     environment:
       MARATHON_MASTER: zk://localhost:2181/mesos
+      SWARM_MESOS_USER: root
     depends_on:
       - zookeeper
