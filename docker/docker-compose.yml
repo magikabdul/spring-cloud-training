@@ -11,4 +11,17 @@ services:
       MESOS_HOSTNAME: localhost
     depends_on:
       - zookeeper
-
+  mesos_slave:
+    image: mesosphere/mesos-slave:1.4.1
+    network_mode: host
+    environment:
+      MESOS_PORT: 5051
+      MESOS_MASTER: zk://localhost:2181/mesos
+      MESOS_HOSTNAME: localhost
+      MESOS_ CONTAINERIZERS: docker
+      MESOS_WORK_DIR: /tmp
+      MESOS_LAUNCHER: posix
+      MESOS_SYSTEMD_ENABLE_SUPPORT: "false"
+    depends_on:
+      - zookeeper
+      - mesos_master
