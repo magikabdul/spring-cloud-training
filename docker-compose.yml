@@ -6,6 +6,7 @@ services:
     environment:
       - ENCRYPT_KEY=${ENCRYPT_KEY}
       - DEFAULT_PROFILE=${DEFAULT_PROFILE}
+      - PING_TIMEOUT=${PING_TIMEOUT}
     networks:
       cloud:
         ipv4_address: ${CONFIGURATION_SERVER}
@@ -47,8 +48,8 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
       - PGDATA=/var/lib/postgresql/data/application
-    #volumes:
-    #  - ./data/users:/var/lib/postgresql/data/application
+    volumes:
+      - ./data/users:/var/lib/postgresql/data/application
     networks:
       cloud:
         ipv4_address: ${USERS_DATABASE_SERVER}
@@ -73,8 +74,8 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
       - PGDATA=/var/lib/postgresql/data/application
-    #volumes:
-    #  - ./data/departments:/var/lib/postgresql/data/application
+    volumes:
+      - ./data/departments:/var/lib/postgresql/data/application
     networks:
       cloud:
         ipv4_address: ${DEPARTMENTS_DATABASE_SERVER}
