@@ -9,21 +9,24 @@ services:
     environment:
       MESOS_ZK: zk://localhost:2181/mesos
       MESOS_HOSTNAME: localhost
-      SWARM_MESOS_USER: root
     depends_on:
       - zookeeper
   mesos_slave:
     image: mesosphere/mesos-slave:1.4.1
     network_mode: host
+    privileged: true
     environment:
       MESOS_PORT: 5051
       MESOS_MASTER: zk://localhost:2181/mesos
       MESOS_HOSTNAME: localhost
-      MESOS_ CONTAINERIZERS: docker
+      MESOS_CONTAINERIZERS: docker,mesos
       MESOS_WORK_DIR: /tmp
       MESOS_LAUNCHER: posix
+      MESOS_SWITCH_USER: 0
       MESOS_SYSTEMD_ENABLE_SUPPORT: "false"
-      SWARM_MESOS_USER: root
+    volumes:
+      - /var/run/docker.sock:/run/docker.sock
+      - /usr/local/bin/docker:/bin/docker
     depends_on:
       - zookeeper
       - mesos_master
@@ -32,6 +35,5 @@ services:
     network_mode: host
     environment:
       MARATHON_MASTER: zk://localhost:2181/mesos
-      SWARM_MESOS_USER: root
     depends_on:
       - zookeeper
