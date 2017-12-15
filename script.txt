@@ -14,3 +14,4 @@ npm install -g node-sass --no-bin-links
 
 
 docker swarm join --token SWMTKN-1-3p918gfkw9wocchgrt2xj2q6yn2lhnurnmsnuro9u4uyed6lmg-3yle5q58g3yunjsm67pan6zt8 192.168.8.104:2377
+ sudo docker network create --scope=swarm --driver=overlay --subnet=192.168.0.0/24 cloud

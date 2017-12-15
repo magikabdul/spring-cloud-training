@@ -133,7 +133,7 @@ services:
 
 networks:
   cloud:
-    driver: bridge
+    driver: bridged
     ipam:
       config:
         - subnet: ${SUBNET}
