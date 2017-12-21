@@ -8,8 +8,17 @@
 	<artifactId>core</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<packaging>bom</packaging>
+	<packaging>pom</packaging>
 
 	<name>core</name>
+
+	<modules>
+		<module>configuration</module>
+		<module>departments</module>
+		<module>users</module>
+		<module>discovery</module>
+		<module>gateway</module>
+		<module>zipkin</module>
+	</modules>
 
 </project>
