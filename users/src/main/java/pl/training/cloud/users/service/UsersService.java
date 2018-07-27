@@ -1,6 +1,7 @@
 package pl.training.cloud.users.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -8,15 +9,12 @@ import pl.training.cloud.users.model.ResultPage;
 import pl.training.cloud.users.model.User;
 import pl.training.cloud.users.repository.UsersRepository;
 
+@RequiredArgsConstructor
 @Service
 public class UsersService {
 
+    @NonNull
     private UsersRepository usersRepository;
-
-    @Autowired
-    public UsersService(UsersRepository usersRepository) {
-        this.usersRepository = usersRepository;
-    }
 
     public void addUser(User user) {
         usersRepository.saveAndFlush(user);
