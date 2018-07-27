@@ -1,9 +1,7 @@
 package pl.training.cloud.departments.config;
 
-import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.ResourceBundleMessageSource;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
@@ -15,14 +13,6 @@ import static springfox.documentation.spi.DocumentationType.SWAGGER_2;
 public class Beans {
 
     private static final String BASE_PACKAGE = "pl.training.cloud";
-
-    @Bean
-    public MessageSource messageSource() {
-        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setDefaultEncoding("utf-8");
-        messageSource.setBasename("exceptions");
-        return messageSource;
-    }
 
     @Bean
     public Docket productApi() {
