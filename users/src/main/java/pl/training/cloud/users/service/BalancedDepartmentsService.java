@@ -1,6 +1,7 @@
 package pl.training.cloud.users.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -15,17 +16,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Service
+@RequiredArgsConstructor
 public class BalancedDepartmentsService implements DepartmentsService {
 
     private static final String DEPARTMENTS_MICROSERVICE = "departments-microservice";
     private static final String RESOURCE_NAME = "/departments/";
 
+    @NonNull
     private DiscoveryClient discoveryClient;
-
-    @Autowired
-    public BalancedDepartmentsService(DiscoveryClient discoveryClient) {
-        this.discoveryClient = discoveryClient;
-    }
 
     @Cacheable(value = "departments", unless = "#result == null")
     @Override
@@ -39,7 +37,7 @@ public class BalancedDepartmentsService implements DepartmentsService {
 
     private Optional<Department> getDepartment(String resourceUri) {
         try {
-            Optional.of(new RestTemplate().getForObject(resourceUri, Department.class));
+            return Optional.of(new RestTemplate().getForObject(resourceUri, Department.class));
         } catch (HttpClientErrorException ex) {
             Logger.getLogger(getClass().getName()).log(Level.INFO, "### Fetching department failed");
         }

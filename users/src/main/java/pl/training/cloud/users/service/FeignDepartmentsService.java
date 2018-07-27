@@ -1,7 +1,8 @@
 package pl.training.cloud.users.service;
 
 import feign.FeignException;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import pl.training.cloud.users.model.Department;
@@ -11,14 +12,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Service
+@RequiredArgsConstructor
 public class FeignDepartmentsService implements DepartmentsService {
 
+    @NonNull
     private FeignDepartmentsClient feignDepartmentsClient;
-
-    @Autowired
-    public FeignDepartmentsService(FeignDepartmentsClient feignDepartmentsClient) {
-        this.feignDepartmentsClient = feignDepartmentsClient;
-    }
 
     @Cacheable(value = "departments", unless = "#result == null")
     @Override
