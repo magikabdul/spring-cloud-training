@@ -1,19 +1,17 @@
 package pl.training.cloud.departments.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.training.cloud.departments.model.Department;
 import pl.training.cloud.departments.repository.DepartmentsRepository;
 
+@RequiredArgsConstructor
 @Service
 public class DepartmentsService {
 
+    @NonNull
     private DepartmentsRepository departmentsRepository;
-
-    @Autowired
-    public DepartmentsService(DepartmentsRepository departmentsRepository) {
-        this.departmentsRepository = departmentsRepository;
-    }
 
     public Department addDepartment(Department department) {
         departmentsRepository.saveAndFlush(department);
