@@ -1,5 +1,6 @@
 package pl.training.cloud.users.service;
 
+import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,8 @@ public class FeignDepartmentsService implements DepartmentsService {
     public Optional<Department> getDepartmentById(Long id) {
         try {
             return Optional.of(feignDepartmentsClient.getDepartmentById(id));
-        } catch (Exception ex) {
+        } catch (FeignException ex) {
+            ex.printStackTrace();
             Logger.getLogger(getClass().getName()).log(Level.INFO, "### Fetching department failed");
         }
         return Optional.empty();
